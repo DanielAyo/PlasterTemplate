@@ -80,6 +80,7 @@ Here are some tips on ensuring you create an excellent suggestion:
 Looking to make your first contribution? Congratulations, you are taking the first steps into an amazing journey.
 
 Don't know where to start? You can start by looking through the issues for the **Beginner** and **Help Wanted** tags:
+
 * **Beginner** are simple and should only take a few lines of code and tests to complete.
 * **Help Wanted** are more involved and will take more effort to complete.
 
@@ -105,6 +106,7 @@ Here are a few guidelines that should be followed:
 * Ensure that any code you write aligns with community style guides.
 * Don't include issue numbers in the PR title.
 * Ensure that your branch is up-to-date to reduce the merge conflicts that could occur.
+
 ### Things that might get your Pull Request rejected
 
 There are often things in Pull Requests that might lead to a pull request being rejected, these include:
@@ -114,9 +116,3 @@ There are often things in Pull Requests that might lead to a pull request being 
 * Code that doesn't align with community style recommendations.
 * Code that fails Pester tests or PowerShell Script analyser.
 * Code that is obviously plagiarised.
-
-<!--
-
-    This is based upon the work by the Atom project, https://github.com/atom/atom/
-
--->

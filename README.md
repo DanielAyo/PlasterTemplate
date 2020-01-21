@@ -11,7 +11,7 @@ The goal of this template is to provide a strong structure for PowerShell module
 You can install Plaster from the [PowerShell Gallery](https://powershellgallery.com/packages/Plaster/)
 
 ``` PowerShell
-PS> Install-Module -Name Plaster
+Install-Module -Name Plaster
 ```
 
 ## Clone the template
@@ -19,7 +19,7 @@ PS> Install-Module -Name Plaster
 Using Git you can clone the template locally.
 
 ``` PowerShell
-PS> git clone https://github.com/poshsecurity/PlasterTemplate
+git clone https://github.com/poshsecurity/PlasterTemplate
 ```
 
 ## Creating a new module
@@ -30,25 +30,29 @@ I typically follow this workflow:
 
 1. Create a public (or private) on GitHub
 2. Clone the repository locally
-    ``` PowerShell
-    PS> git clone <Path to repository>
-    ```
-3. Create a hash table containing the required parameters, and then call ```Invoke-Plaster```
-    ``` PowerShell
-    PS> $PlasterParameters = @{
-        TemplatePath      = "<path to the Plaster Template above>"
-        DestinationPath   = "<path to the new repository you cloned>"
-        AuthorName        = "Cool PowerShell Developer"
-        AuthorEmail       = "Developer@PowerShellis.Cool"
-        ModuleName        = "MyNewModule"
-        ModuleDescription = "This is my awesome PowerShell Module!"
-        ModuleVersion     = "0.1"
-        ModuleFolders     = @("functions", "internal")
-        GitHub            = "Yes"
-        License           = "Yes"
-    }
 
-    PS> Invoke-Plaster @PlasterParameters
-    ```
+``` PowerShell
+git clone <Path to repository>
+```
+
+3. Create a hash table containing the required parameters, and then call ```Invoke-Plaster```
+
+``` PowerShell
+$PlasterParameters = @{
+    TemplatePath      = "<path to the Plaster Template above>"
+    DestinationPath   = "<path to the new repository you cloned>"
+    AuthorName        = "Cool PowerShell Developer"
+    AuthorEmail       = "Developer@PowerShellis.Cool"
+    ModuleName        = "MyNewModule"
+    ModuleDescription = "This is my awesome PowerShell Module!"
+    ModuleVersion     = "0.1"
+    ModuleFolders     = @("public", "private")
+    GitHub            = "Yes"
+    License           = "Yes"
+}
+
+Invoke-Plaster @PlasterParameters
+```
+
 4. Plaster should then execute, creating the required files and folders.
 5. When you are ready you can push everything up to GitHub.
