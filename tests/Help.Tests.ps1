@@ -3,17 +3,18 @@ $script:ModuleName = '<%= $PLASTER_PARAM_ModuleName %>'
 # Removes all versions of the module from the session before importing
 Get-Module $ModuleName | Remove-Module
 
-$ModuleBase = Split-Path -Parent $MyInvocation.MyCommand.Path
+$base = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # Get the list of functions we are not going to run tests against
-$FunctionHelpTestExceptions = Get-Content -Path "$ModuleBase\Help.Exceptions.txt"
+$FunctionHelpTestExceptions = Get-Content -Path "$base\Help.Exceptions.txt"
 
 # For tests in .\Tests subdirectory
-if ((Split-Path $ModuleBase -Leaf) -eq 'Tests') {
-    $ModuleBase = Split-Path $ModuleBase -Parent
+if ((Split-Path $base -Leaf) -eq 'Tests') {
+    $base = Split-Path $base -Parent
+    $moduleBase = "$base\$ModuleName"
 }
 
-$Module = Import-Module $ModuleBase\$ModuleName.psd1 -PassThru -ErrorAction Stop
+$Module = Import-Module $moduleBase\$ModuleName.psd1 -PassThru -ErrorAction Stop
 $commands = Get-Command -Module $module -CommandType Cmdlet, Function, Workflow  # Not alias
 
 ## When testing help, remember that help is cached at the beginning of each session.
