@@ -1,6 +1,6 @@
 # Taken from http://overpoweredshell.com/Working-with-Plaster/
 
-$functionFolders = @('functions', 'internal', 'classes')
+$functionFolders = @('public', 'private', 'classes')
 ForEach ($folder in $functionFolders)
 {
     $folderPath = Join-Path -Path $PSScriptRoot -ChildPath $folder
@@ -11,9 +11,9 @@ ForEach ($folder in $functionFolders)
         ForEach ($function in $functions)
         {
             Write-Verbose -Message "  Importing $($function.BaseName)"
-            . $function.providerpath
+            . $function.pspath
         }
     }
 }
-$publicFunctions = (Get-ChildItem -Path "$PSScriptRoot\functions" -Filter '*.ps1').BaseName
+$publicFunctions = (Get-ChildItem -Path "$PSScriptRoot\public" -Filter '*.ps1').BaseName
 Export-ModuleMember -Function $publicFunctions
